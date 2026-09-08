@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap</title>
+  
+  <!-- Rutas corregidas apuntando a las subcarpetas -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+      <div class="login">
+        <!-- Ruta corregida para la imagen de fondo -->
+        <img src="{{ url_for('static', filename='img/login-bg.png') }}" alt="login image" class="login__img">
+
+        <form action="" class="login__form">
+          <h1 class="login__title">Login a SkillSwap</h1>
+
+          <div class="login__content">
+            <div class="login__box">
+              <i class="bx bx-user login__icon"></i>
+              
+              <div class="login__box-input">
+                <input type="email" required class="login__input" placeholder=" ">
+                <label for="" class="login__label">Correo / Usuario</label>
+              </div>
+            </div>
+
+            <div class="login__box">
+              <i class="ri-lock-2-line login__icon"></i>
+
+              <div class="login__box-input">
+                <input type="password" required class="login__input" id="login-pass" placeholder=" ">
+                <label for="" class="login__label">Contraseña</label>
+                <i class="ri-eye-off-line login__eye" id="login-eye"></i>
+               </div>
+            </div>
+          </div>
+
+          <div class="login__check">
+            <div class="login__check-group">
+              <input type="checkbox" class="login__check-input">
+              <label for="" class="login__check-label">Recordarme</label>
+            </div>
+              <a href="#" class="login__forgot">¿Olvidó su contraseña?</a>
+          </div>
+
+          <button type="submit" class="login__button">Iniciar Sesión</button>
+
+          <p class="login__register">
+            ¿No tienes una cuenta? <a href="{{ url_for('register') }}">Registrarse</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- Bloque de JavaScript limpio y sin errores de sintaxis -->
+      <script>
+        const showHiddenPass = (loginPass, LoginEye) => {
+          const input = document.getElementById(loginPass);
+          const iconEye = document.getElementById(LoginEye);
+
+          if (iconEye && input) {
+            iconEye.addEventListener('click', () => {
+              if(input.type === 'password'){
+                input.type = 'text';
+                iconEye.classList.add('ri-eye-line');
+                iconEye.classList.remove('ri-eye-off-line');
+              } else {
+                input.type ='password';
+                iconEye.classList.remove('ri-eye-line');
+                iconEye.classList.add('ri-eye-off-line');
+              }
+            });
+          }
+        };
+
+        showHiddenPass('login-pass', 'login-eye');
+      </script>
+</body>
+</html>
